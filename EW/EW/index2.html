@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dustbin Map</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <!-- Search Box Section -->
+        <div id="searchBox">
+            <input type="text" id="searchInput" placeholder="Search for a place...">
+        </div>
+        
+        <!-- Map Section -->
+        <div id="map">
+            <!-- Example Points -->
+            <div class="point red" style="top: 50px; left: 150px;" title="Dustbin 1: Full"></div>
+            <div class="point yellow" style="top: 200px; left: 300px;" title="Dustbin 2: Half-filled"></div>
+            <div class="point green" style="top: 350px; left: 100px;" title="Dustbin 3: Empty"></div>
+        </div>
+
+        <!-- Indicator Box Section -->
+        <div id="indicatorBox">
+            <div class="indicator">
+                <div class="dot red"></div>
+                <span>Full Dustbin</span>
+            </div>
+            <div class="indicator">
+                <div class="dot yellow"></div>
+                <span>Half-filled Dustbin</span>
+            </div>
+            <div class="indicator">
+                <div class="dot green"></div>
+                <span>Empty Dustbin</span>
+            </div>
+        </div>
+        
+        <!-- Navigation Button -->
+        <div>
+            <button id="navigateButton" onclick="window.location.href='index3.html';">Map View</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dustbin Map</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        /* Search Box Styles */
+        #searchBox {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #searchInput {
+            width: 60%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Map Styles */
+        #map {
+            position: relative;
+            width: 90%;
+            height: 500px;
+            margin: 20px auto;
+            background-image: url('map-placeholder.jpg'); /* Replace with your map image */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .point.red {
+            background-color: red;
+        }
+
+        .point.yellow {
+            background-color: yellow;
+        }
+
+        .point.green {
+            background-color: green;
+        }
+
+        .point:hover {
+            transform: scale(1.2);
+            z-index: 2;
+        }
+
+        /* Indicator Box Styles */
+        #indicatorBox {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background-color: red;
+        }
+
+        .dot.yellow {
+            background-color: yellow;
+        }
+
+        .dot.green {
+            background-color: green;
+        }
+
+        /* Navigation Button */
+        #navigateButton {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #navigateButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Zoom Buttons */
+        .map-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        .map-button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .map-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Search Box Section -->
+        <div id="searchBox">
+            <input type="text" id="searchInput" placeholder="Search for a place or dustbin...">
+        </div>
+        
+        <!-- Map Section -->
+        <div id="map">
+            <!-- Example Points -->
+            <div class="point red" style="top: 50px; left: 150px;" title="Dustbin 1: Full (Location: Park Avenue, Near Gate 1)"></div>
+            <div class="point yellow" style="top: 200px; left: 300px;" title="Dustbin 2: Half-filled (Location: Baker Street, Next to Shop 5)"></div>
+            <div class="point green" style="top: 350px; left: 100px;" title="Dustbin 3: Empty (Location: High Street, Corner Lane)"></div>
+        </div>
+
+        <!-- Map Buttons for Interactivity -->
+        <div class="map-buttons">
+            <button class="map-button" onclick="zoomIn()">Zoom In</button>
+            <button class="map-button" onclick="zoomOut()">Zoom Out</button>
+            <button class="map-button" onclick="resetMap()">Reset Map</button>
+        </div>
+
+        <!-- Indicator Box Section -->
+        <div id="indicatorBox">
+            <div class="indicator">
+                <div class="dot red"></div>
+                <span>Full Dustbin</span>
+            </div>
+            <div class="indicator">
+                <div class="dot yellow"></div>
+                <span>Half-filled Dustbin</span>
+            </div>
+            <div class="indicator">
+                <div class="dot green"></div>
+                <span>Empty Dustbin</span>
+            </div>
+        </div>
+        
+        <!-- Navigation Button -->
+        <div>
+            <button id="navigateButton" onclick="window.location.href='index1.html';">Back to Homepage</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Map Interaction -->
+    <script>
+        const map = document.getElementById('map');
+        let zoomLevel = 1;
+
+        function zoomIn() {
+            zoomLevel += 0.1;
+            map.style.transform = `scale(${zoomLevel})`;
+        }
+
+        function zoomOut() {
+            zoomLevel = Math.max(0.5, zoomLevel - 0.1);
+            map.style.transform = `scale(${zoomLevel})`;
+        }
+
+        function resetMap() {
+            zoomLevel = 1;
+            map.style.transform = `scale(1)`;
+        }
+    </script>
+</body>
+</html>

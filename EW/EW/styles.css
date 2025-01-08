@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #c3ff63, #d3eecd); /* Gradient background */
+    color: #333;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+#searchBox {
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #007bff;
+}
+
+#map {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background-image: url('map2.png'); /* Replace 'map.png' with your map image URL */
+    background-size: cover;
+    border: 2px solid #ddd;
+    margin-top: 20px;
+}
+
+.point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.point:hover {
+    transform: scale(1.2);
+}
+
+.red {
+    background-color: #ff4d4d;
+}
+
+.yellow {
+    background-color: #ffcc00;
+}
+
+.green {
+    background-color: #28a745;
+}
+
+#navigateButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#navigateButton:hover {
+    background-color: #0056b3;
+}
+
+/* New section for indicator description */
+#indicatorBox {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 60%;
+}
+
+#indicatorBox .indicator {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+#indicatorBox .indicator .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#indicatorBox .indicator .dot.red {
+    background-color: #ff4d4d;
+}
+
+#indicatorBox .indicator .dot.yellow {
+    background-color: #ffcc00;
+}
+
+#indicatorBox .indicator .dot.green {
+    background-color: #28a745;
+}
