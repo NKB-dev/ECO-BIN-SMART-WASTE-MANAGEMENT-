@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Bin Issue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .confirmation {
+            text-align: center;
+            color: #333;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .tracking {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="reportContainer">
+        <h1>Report a Bin Issue</h1>
+        <p>Help us keep the system efficient by reporting issues with bins.</p>
+        <form id="reportForm">
+            <label for="issueType">Type of Issue</label>
+            <select id="issueType" name="issueType" required>
+                <option value="">Select an issue</option>
+                <option value="overflowing">Overflowing</option>
+                <option value="damaged">Damaged</option>
+                <option value="notFunctioning">Not Functioning</option>
+            </select>
+
+            <label for="location">Bin Location</label>
+            <input type="text" id="location" name="location" placeholder="Enter the bin's location" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Provide additional details about the issue" rows="4" required></textarea>
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+
+    <div class="container confirmation" id="confirmationContainer" style="display: none;">
+        <h1>Thank you! Your report has been successfully submitted.</h1>
+        <div class="details">
+            <h2>Report Details:</h2>
+            <p><strong>Bin Location:</strong> <span id="confirmLocation"></span></p>
+            <p><strong>Issue Type:</strong> <span id="confirmIssueType"></span></p>
+            <p><strong>Description:</strong> <span id="confirmDescription"></span></p>
+            <p><strong>Submitted Date and Time:</strong> <span id="confirmDateTime"></span></p>
+        </div>
+        <div class="tracking">
+            <h2>Tracking Information:</h2>
+            <p><strong>Report ID:</strong> <span id="reportId"></span></p>
+            <p><strong>Estimated Resolution Time:</strong> Expected to be resolved within 48 hours.</p>
+            <p><strong>Contact Information:</strong> support@example.com | +1-800-555-1234</p>
+        </div>
+        <div class="next-steps">
+            <h2>Next Steps:</h2>
+            <p>You’ll receive updates once the issue is resolved or if further information is required.</p>
+            <p>If you encounter another issue, feel free to report it using our platform.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('reportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect form data
+            const issueType = document.getElementById('issueType').value;
+            const location = document.getElementById('location').value;
+            const description = document.getElementById('description').value;
+            const dateTime = new Date().toLocaleString();
+            const reportId = 'BIN-' + Math.floor(100000 + Math.random() * 900000); // Generate a random report ID
+
+            // Update confirmation page
+            document.getElementById('confirmIssueType').innerText = issueType;
+            document.getElementById('confirmLocation').innerText = location;
+            document.getElementById('confirmDescription').innerText = description;
+            document.getElementById('confirmDateTime').innerText = dateTime;
+            document.getElementById('reportId').innerText = reportId;
+
+            // Switch to confirmation view
+            document.getElementById('reportContainer').style.display = 'none';
+            document.getElementById('confirmationContainer').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
